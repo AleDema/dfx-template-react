@@ -6,6 +6,7 @@ import { defaultProviders } from "@connect2ic/core/providers"
 import { createClient } from "@connect2ic/core"
 import { Connect2ICProvider } from "@connect2ic/react"
 import "@connect2ic/core/style.css"
+import * as backend from "../../../.dfx/local/canisters/backend"
 
 const client = createClient({
   canisters: {
