@@ -4,7 +4,7 @@ import { Actor, HttpAgent } from "@dfinity/agent";
 import { idlFactory } from './backend.did.js';
 export { idlFactory } from './backend.did.js';
 // CANISTER_ID is replaced by webpack based on node environment
-export const canisterId = process.env.backend_CANISTER_ID;
+export const canisterId = process.env.BACKEND_CANISTER_ID;
 
 /**
  * 
@@ -12,12 +12,12 @@ export const canisterId = process.env.backend_CANISTER_ID;
  * @param {{agentOptions?: import("@dfinity/agent").HttpAgentOptions; actorOptions?: import("@dfinity/agent").ActorConfig}} [options]
  * @return {import("@dfinity/agent").ActorSubclass<import("./backend.did.js")._SERVICE>}
  */
- export const createActor = (canisterId, options) => {
-  const agent = new HttpAgent({ ...options?.agentOptions });
+export const createActor = (canisterId, options) => {
+  const agent = new HttpAgent(options ? { ...options.agentOptions } : {});
   
   // Fetch root key for certificate validation during development
-  if(process.env.NODE_ENV !== "production") {
-    agent.fetchRootKey().catch(err=>{
+  if (process.env.NODE_ENV !== "production") {
+    agent.fetchRootKey().catch(err => {
       console.warn("Unable to fetch root key. Check to ensure that your local replica is running");
       console.error(err);
     });
@@ -27,7 +27,7 @@ export const canisterId = process.env.backend_CANISTER_ID;
   return Actor.createActor(idlFactory, {
     agent,
     canisterId,
-    ...options?.actorOptions,
+    ...(options ? options.actorOptions : {}),
   });
 };
   
@@ -35,4 +35,4 @@ export const canisterId = process.env.backend_CANISTER_ID;
  * A ready-to-use agent for the backend canister
  * @type {import("@dfinity/agent").ActorSubclass<import("./backend.did.js")._SERVICE>}
  */
- export const backend = createActor(canisterId);
+export const backend = createActor(canisterId);

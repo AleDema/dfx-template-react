@@ -1,14 +1,20 @@
-# hello template
+# backend template
 
-To get started, find and replace "hello" with the name of your project in the files and filenames. Then, run `npm install`, and `npm run dev` to run your app locally.
+EDIT: Customized version of Kyle's React template, it adds: 
+- TailwindCSS for styling
+- Valtio as state manager
+- Connect2IC for auth
+- ZhenyaUsenko's stable hashmap
+
+To get started, find and replace "backend" with the name of your project in the files and filenames. Then, run `npm install`, and `npm run dev` to run your app locally.
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/krpeacock/dfx-template-react)
 
-Welcome to your new hello project and to the internet computer development community. By default, creating a new project adds this README and some template files to your project directory. You can edit these template files to customize your project and to include your own code to speed up the development cycle.
+Welcome to your new backend project and to the internet computer development community. By default, creating a new project adds this README and some template files to your project directory. You can edit these template files to customize your project and to include your own code to speed up the development cycle.
 
 To get started, you might want to explore the project directory structure and the default configuration file. Working with this project in your development environment will not affect any production deployment or identity tokens.
 
-To learn more before you start working with hello, see the following documentation available online:
+To learn more before you start working with backend, see the following documentation available online:
 
 - [Quick Start](https://sdk.dfinity.org/docs/quickstart/quickstart-intro.html)
 - [SDK Developer Tools](https://sdk.dfinity.org/docs/developers-guide/sdk-guide.html)
@@ -19,7 +25,7 @@ To learn more before you start working with hello, see the following documentati
 If you want to start working on your project right away, you might want to try the following commands:
 
 ```bash
-cd hello/
+cd backend/
 dfx help
 dfx config --help
 ```
@@ -27,7 +33,7 @@ dfx config --help
 ## Running with GitPod
 Start running this project in your browser by visiting it in [Gitpod](https://gitpod.io/#https://github.com/krpeacock/dfx-template-react)
 
-The app will automatically start up DFX, deploy the Hello canister, and start up a frontend development server for you.
+The app will automatically start up DFX, deploy the backend canister, and start up a frontend development server for you.
 
 ## Running the project locally
 
@@ -41,10 +47,10 @@ Alternately, step by step, you can run
 
 ```bash
 dfx start --background --clean
-dfx deploy hello
+dfx deploy backend
 node setupEnv.js
 npm run generate
-npx parcel src/hello_assets/src/index.html
+npx parcel src/frontend/src/index.html
 ```
 
 If you change the names of canisters, be sure to update those new path names in `package.json` and `dfx.json`.

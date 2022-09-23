@@ -1,5 +1,5 @@
 {
-  "name": "hello_assets",
+  "name": "frontend",
   "version": "0.1.1",
   "description": "Internet Computer starter application",
   "keywords": [
@@ -9,13 +9,13 @@
     "Canister"
   ],
   "scripts": {
-    "build": "parcel build src/hello_assets/src/index.html",
+    "build": "parcel build src/frontend/src/index.html",
     "prebuild": "npm run generate",
     "start": "npm run dev",
-    "dev": "parcel src/hello_assets/src/index.html",
-    "predev": "dfx start --background --clean; dfx deploy hello; node setupEnv.js; npm run generate;",
+    "dev": "parcel src/frontend/src/index.html",
+    "predev": "dfx start --background --clean; dfx deploy backend; node setupEnv.js; npm run generate;",
     "postdev": "dfx stop",
-    "generate": "dfx generate hello"
+    "generate": "dfx generate backend"
   },
   "devDependencies": {
     "@dfinity/agent": "0.12.0",
@@ -23,7 +23,9 @@
     "@dfinity/principal": "0.12.0",
     "buffer": "^6.0.3",
     "parcel": "^2.4.0",
-    "process": "^0.11.10"
+    "postcss": "^8.4.16",
+    "process": "^0.11.10",
+    "tailwindcss": "^3.1.8"
   },
   "browserslist": [
     "last 2 chrome version",
@@ -32,7 +34,10 @@
     "last 2 edge version"
   ],
   "dependencies": {
+    "@connect2ic/core": "^0.2.0-beta.5",
+    "@connect2ic/react": "^0.2.0-beta.5",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "valtio": "^1.7.0"
   }
 }

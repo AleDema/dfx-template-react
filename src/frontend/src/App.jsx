@@ -1,11 +1,23 @@
 import * as React from 'react';
 import logo from "../assets/logo.png";
-import { hello } from "../../declarations/hello"
+import { backend } from "../../declarations/backend"
+import { ConnectButton, ConnectDialog, Connect2ICProvider, useConnect } from "@connect2ic/react"
+
+
 
 const App = () => {
     const [greeting, setGreeting] = React.useState("");
     const [pending, setPending] = React.useState(false);
     const inputRef = React.useRef();
+
+    const { isConnected, principal, activeProvider } = useConnect({
+      onConnect: () => {
+        // Signed in
+      },
+      onDisconnect: () => {
+        // Signed out
+      }
+    })
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -13,8 +25,8 @@ const App = () => {
         setPending(true);
         const name = inputRef.current.value.toString();
 
-        // Interact with hello actor, calling the greet method
-        const greeting = await hello.greet(name);
+        // Interact with backend actor, calling the greet method
+        const greeting = await backend.greet(name);
         setGreeting(greeting);
         setPending(false);
         return false;
@@ -22,6 +34,9 @@ const App = () => {
 
     return (
       <main>
+
+      <ConnectButton />
+      <ConnectDialog dark={false} />
         <img src={logo} alt="DFINITY logo" />
         <form onSubmit={handleSubmit}>
           <label htmlFor="name">Enter your name: &nbsp;</label>
