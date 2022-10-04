@@ -1,14 +1,14 @@
 # backend template
 
-EDIT: Customized version of Kyle's React template, it adds: 
+EDIT: Customized version of Kyle's React template, it adds:
+
 - TailwindCSS for styling
 - Valtio as state manager
+- React Router V6 for routing
 - Connect2IC for auth
 - ZhenyaUsenko's stable hashmap
 
 To get started, find and replace "backend" with the name of your project in the files and filenames. Then, run `npm install`, and `npm run dev` to run your app locally.
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/krpeacock/dfx-template-react)
 
 Welcome to your new backend project and to the internet computer development community. By default, creating a new project adds this README and some template files to your project directory. You can edit these template files to customize your project and to include your own code to speed up the development cycle.
 
@@ -30,11 +30,6 @@ dfx help
 dfx config --help
 ```
 
-## Running with GitPod
-Start running this project in your browser by visiting it in [Gitpod](https://gitpod.io/#https://github.com/krpeacock/dfx-template-react)
-
-The app will automatically start up DFX, deploy the backend canister, and start up a frontend development server for you.
-
 ## Running the project locally
 
 If you want to test your project locally, you can use the following commands:
@@ -43,7 +38,7 @@ If you want to test your project locally, you can use the following commands:
 npm run dev
 ```
 
-Alternately, step by step, you can run 
+Alternately, step by step, you can run
 
 ```bash
 dfx start --background --clean
@@ -54,7 +49,6 @@ npx parcel src/frontend/src/index.html
 ```
 
 If you change the names of canisters, be sure to update those new path names in `package.json` and `dfx.json`.
-
 
 Once the job completes, your application will be available at `http://localhost:8000?canisterId={asset_canister_id}`.
 

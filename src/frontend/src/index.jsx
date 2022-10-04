@@ -1,23 +1,33 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import App from './App';
+import Home from './pages/Home';
+import ErrorPage from './pages/ErrorPage';
 
-import { defaultProviders } from "@connect2ic/core/providers"
-import { createClient } from "@connect2ic/core"
-import { Connect2ICProvider } from "@connect2ic/react"
-import "@connect2ic/core/style.css"
-import * as backend from "../../../.dfx/local/canisters/backend"
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+} from "react-router-dom";
 
-const client = createClient({
-  canisters: {
-    backend,
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App/>,
+    errorElement: <ErrorPage />,
   },
-  providers: defaultProviders,
-})
+  {
+    path: "home",
+    element: <Home/>,
+    errorElement: <ErrorPage />,
+  },
+]);
 
 
-ReactDOM.render(  
-    <Connect2ICProvider client={client}>
-        <App />
-    </Connect2ICProvider>, 
-    document.getElementById('root'));
+const container = document.getElementById('root');
+const root = createRoot(container); // createRoot(container!) if you use TypeScript
+root.render(
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);
